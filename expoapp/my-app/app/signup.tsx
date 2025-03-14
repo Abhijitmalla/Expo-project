@@ -56,10 +56,10 @@ createUserWithEmailAndPassword(auth, email, password)
 };
   
   const onSignUp = () => {
-    router.navigate('/login'); // Corrected navigation method
+    router.push('/login'); // Corrected navigation method
   };
   const onCreate = () => {
-    router.navigate('/signup'); // Corrected navigation method
+    router.push('/signup'); // Corrected navigation method
   };
 
   return (
@@ -121,7 +121,7 @@ createUserWithEmailAndPassword(auth, email, password)
 
 
       {/* Sign In Button */}
-      <TouchableOpacity style={styles.signinBtn} onPress={onSignUp}>
+      <TouchableOpacity style={styles.signinBtn} onPress={handleSignup}>
       <Text style={styles.signText}>Sign Up</Text>
       <LinearGradient colors={['#F97794', '#D16798', '#623AA2']} style={styles.linearGradient}>
  <AntDesign
@@ -135,6 +135,10 @@ createUserWithEmailAndPassword(auth, email, password)
  <TouchableOpacity onPress={handleSignup}>
 
  </TouchableOpacity>
+ <Text style={styles.footer}>
+        Already have an account?  
+         <Text style={styles.createText} onPress={onSignUp}>Login</Text>
+       </Text>
 </Text>
     <View style={styles.image2}>
 <ImageBackground source={require("../assets/images/Vector 2.png")} style={styles.imageStyle}/>
@@ -226,6 +230,10 @@ left:0,
   imageStyle:{
     height:350,
     width:150,
+  },
+  createText: {
+    textDecorationLine: "underline",
+    color: "blue",
   },
    
   })
