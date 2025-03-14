@@ -5,10 +5,55 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient'; // Corrected import
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { ScrollView } from 'react-native-gesture-handler';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import { auth } from '@/FirebaseConfig';
+import { useState } from 'react';
+
+
+
 
 const SignUp = () => {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [sentEmail, setSentEmail] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+     
+  const handleInputChange = (setter: { (value: React.SetStateAction<string>): void; (value: React.SetStateAction<string>): void; (arg0: any): void; }) => (value: any) =>{
+    setter(value);
+    if(errorMessage){
+      setErrorMessage(null)
+    }
+}
 
+const handleSignup = () => {
+if (password !== confirmPassword) {
+  setErrorMessage("Passwords do not match!");
+  return;
+}
+
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    sendEmailVerification(user)
+      .then(() => {
+        setSentEmail(true);
+        alert('Verification email sent! Please check your inbox.');
+      })
+      .catch((error) => {
+        setErrorMessage('Error sending verification email');
+      });
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    router.push('/login'); // Navigate to login page
+  })
+  .catch((error) => {
+    setErrorMessage(error.message);
+  });
+};
   
   const onSignUp = () => {
     router.navigate('/login'); // Corrected navigation method
@@ -40,6 +85,8 @@ const SignUp = () => {
         <TextInput 
           style={styles.textInput} 
           placeholder='E-mail' 
+          value={email}
+          onChangeText={handleInputChange(setEmail)}
           placeholderTextColor="#777" 
         />
       </View>
@@ -51,8 +98,12 @@ const SignUp = () => {
         <TextInput 
           style={styles.textInput} 
           placeholder="Password" 
+          value={password}
+          onChangeText={handleInputChange(setPassword)}
           placeholderTextColor="#777"
           secureTextEntry={true} 
+          maxLength={8}
+
         />
       </View>
       <View style={styles.inputContainer}>
@@ -60,12 +111,14 @@ const SignUp = () => {
         <TextInput 
           style={styles.textInput} 
           placeholder='Confirm Password' 
+          secureTextEntry={!showConfirmPassword}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
           placeholderTextColor="#777" 
         />
       </View>
 
 
-      <Text style={styles.forgetPassword}>Forgot Password?</Text>
 
       {/* Sign In Button */}
       <TouchableOpacity style={styles.signinBtn} onPress={onSignUp}>
@@ -79,8 +132,9 @@ const SignUp = () => {
 </LinearGradient>
       </TouchableOpacity>
       <Text style={styles.footer}>
-  Don't have an Account? 
-  <Text style={{ textDecorationLine: "underline" }} onPress={onCreate}>Create</Text>
+ <TouchableOpacity onPress={handleSignup}>
+
+ </TouchableOpacity>
 </Text>
     <View style={styles.image2}>
 <ImageBackground source={require("../assets/images/Vector 2.png")} style={styles.imageStyle}/>

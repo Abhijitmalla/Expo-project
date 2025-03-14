@@ -54,7 +54,7 @@ const Login = () => {
 
       {/* Email Input Field */}
       <View style={styles.inputContainer}>
-        <FontAwesome name={"mail"} size={24} color={"black"} style={styles.inputIcon} />
+        <AntDesign name={"mail"} size={24} color={"black"} style={styles.inputIcon} />
         <TextInput 
          placeholder='E-mail' 
          value={email}
