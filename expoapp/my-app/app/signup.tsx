@@ -168,6 +168,7 @@ fontSize:30,
 color:'#262626',
 marginBottom:30,
 fontWeight:"bold",
+
   
   },
   inputContainer: {
@@ -212,7 +213,7 @@ fontWeight:"bold",
   },
   signinBtn:{
     flexDirection:"row",
-    marginTop:120,
+    marginTop:10,
     width:"90%",
     justifyContent:"flex-end",
   },
@@ -220,7 +221,7 @@ fontWeight:"bold",
     color:'262626',
     textAlign:"center",
     fontSize:18,
-    marginTop:120,
+    marginTop:10,
   },
   image2:{
 position:"absolute",
@@ -235,5 +236,6 @@ left:0,
     textDecorationLine: "underline",
     color: "blue",
   },
+  
    
   })

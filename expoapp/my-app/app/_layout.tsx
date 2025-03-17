@@ -3,15 +3,15 @@ import { Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const RootLayout = () => (
-  <GestureHandlerRootView>
-  <Stack screenOptions={{headerShown: false}}>
-    <Stack.Screen name="index" />
-    <Stack.Screen name="login" />
-
-    <Stack.Screen name="signup" />
-
-  </Stack>
+  <GestureHandlerRootView style={{ flex: 1 }}>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="(tabs)" />
+      {/* <Stack.Screen name="login" /> 
+      <Stack.Screen name="signup" /> */}
+    </Stack>
   </GestureHandlerRootView>
 );
 
 export default RootLayout;
+
+

@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-const home = () => {
+const Slider = () => {
   return (
     <View>
-      <Text>home</Text>
+      <Text>Slider</Text>
     </View>
   )
 }
 
-export default home;
+export default Slider;
