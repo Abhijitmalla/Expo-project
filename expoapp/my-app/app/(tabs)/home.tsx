@@ -3,27 +3,19 @@ import React from 'react';
 import Header from '@/components/Home/Header';
 
 import Slider from '@/components/Home/Slider';
+import PetListByCategory from '@/components/Home/PetListByCategory';
 
-
-const home = () => {
+const Home = () => {
   return (
-    <View style={{padding:20,
-      marginTop:20
-    }}>
+    <View style={{ padding: 20, marginTop: 20 }}>
       {/* Header */}
-<Header/>
-
-      {/* Sider */}
-
-<Slider/>
-      {/* Category */}
-
-      {/* List of pets */}
-
-      {/* Add new pets */}
-      
+      <Header />
+      {/* Slider */}
+      <Slider />
+      {/* Pet List by Category */}
+      <PetListByCategory />
     </View>
-  )
-}
+  );
+};
 
-export default home;
+export default Home;
