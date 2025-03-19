@@ -2,10 +2,10 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import Header from '@/components/Home/Header';
 
-import Slider from '@/components/Home/Slider';
+// import Slider from '@/components/Home/Slider';
 
 
-const home = () => {
+const Home = () => {
   return (
     <View style={{padding:20,
       marginTop:20
@@ -15,7 +15,7 @@ const home = () => {
 
       {/* Sider */}
 
-<Slider/>
+{/* <Slider/> */}
       {/* Category */}
 
       {/* List of pets */}
@@ -26,4 +26,4 @@ const home = () => {
   )
 }
 
-export default home;
+export default Home;

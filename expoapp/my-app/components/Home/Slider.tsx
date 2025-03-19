@@ -1,12 +1,25 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+// import { View, Text } from 'react-native';
+// import React, { useEffect } from 'react';
+// import { collection,getDocs } from 'firebase/firestore';
+// import {db} from './../../FirebaseConfig';
 
-const Slider = () => {
-  return (
-    <View>
-      <Text>Slider</Text>
-    </View>
-  )
-}
+// export default function Slider(){
 
-export default Slider;
+// useEffect (()=>{
+//   GetSliders();
+// },[])
+
+
+//   const GetSliders=async()=>{
+// const snapshot=await getDocs(collection(db,'Sliders'));
+// snapshot.forEach((doc)=>{
+//   console.log(doc.data());
+  
+// })
+//   }
+//   return(
+//     <View>
+//       <Text>Sider</Text>
+//       </View>
+//   )
+// }

@@ -1,31 +1,25 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import React from 'react';
-import { useUser } from '@clerk/clerk-expo';
+import { useUser, useClerk } from '@clerk/clerk-expo'; // Use useClerk for sign out
 
 const Header = () => {
   const { user } = useUser();
-  console.log("User Data:", user);
+  const { signOut } = useClerk(); // Get signOut function from useClerk
+
+  console.log("User Data:", user); // Log user data
 
   return (
     <View>
-      <View>
-        <Text style={{ fontFamily: 'Outfit', fontSize: 18 }}>Welcome</Text>
-        <Text style={{ fontFamily: 'Outfit-Medium', fontSize: 25 }}>
-          {user?.fullName}
-        </Text>
-        {user?.imageUrl && ( // Ensure imageUrl exists before rendering the Image component
-          <Image
-            source={{ uri: user.imageUrl }}
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 20, // Make it circular if it's a profile pic
-            }}
-          />
-        )}
-      </View>
+      <Text>Welcome</Text>
+      <Text>{user?.fullName}</Text> {/* Render the user's full name if available */}
+
+      {/* Custom sign-out button */}
+      <Button 
+        title="user" 
+        onPress={() => signOut()} // Trigger sign out when button is pressed
+      />
     </View>
   );
-};
+}
 
 export default Header;

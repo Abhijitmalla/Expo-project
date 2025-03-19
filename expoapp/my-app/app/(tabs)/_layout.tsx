@@ -1,12 +1,12 @@
 import { Tabs } from 'expo-router';
-import { ClerkProvider } from '@clerk/clerk-expo';
+
 import { FontAwesome } from '@expo/vector-icons';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 export default function TabLayout() {
   return (
-    <ClerkProvider publishableKey="pk_test_cHJvcGVyLWltcGFsYS03NS5jbGVyay5hY2NvdW50cy5kZXYk">
+
       <Tabs>
         <Tabs.Screen
           name="home"
@@ -41,6 +41,6 @@ export default function TabLayout() {
           }}
         />
       </Tabs>
-    </ClerkProvider>
+   
   );
 }
